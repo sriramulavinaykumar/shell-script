@@ -6,7 +6,15 @@
 # Syntax -sh mybackup-sh <DB_NameIn Caps>
 ###############################################
 
+echo "Provide mysql DB name to take backup.."
 
-echo "Syntax to Run the script is .."
-echo "sh $ <DB_Name>"
-echo "provide mysql DB name to take backup..."
+if [ $# -ne 1 ]; then
+	echo "Failure :syntax to run the script is.."
+	echo "sh $0 <DB_Name>"
+	exit 1
+else 
+V_db_name=$1
+v_pass=$(cat password)
+
+echo "mysqldump -hhostname.rds.aws.com -umaster -pwelcome123 $v_db_name > $v_db_name.sql"
+fi
